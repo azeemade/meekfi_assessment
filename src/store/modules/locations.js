@@ -76,7 +76,7 @@ const actions = {
     },
 
     async getCurrentWeather({ commit }, payload) {
-        const url = 'http://api.weatherapi.com/v1/current.json';
+        const url = 'https://api.weatherapi.com/v1/current.json';
 
         axios.get(url, {
             params: {
@@ -94,7 +94,7 @@ const actions = {
     },
 
     async search({ commit }, payload) {
-        const url = 'http://api.weatherapi.com/v1/search.json';
+        const url = 'https://api.weatherapi.com/v1/search.json';
 
         axios.get(url, {
             params: {
@@ -103,7 +103,7 @@ const actions = {
             }
         })
         .then( response => {
-            const url = 'http://api.weatherapi.com/v1/current.json';
+            const url = 'https://api.weatherapi.com/v1/current.json';
             axios.get(url, {
                 params: {
                     key: 'f3dfa3e1bb9643548fc165750232204',
@@ -123,7 +123,7 @@ const actions = {
     },
 
     async getWeatherHistory({ commit }, payload) {
-        const url = 'http://api.weatherapi.com/v1/history.json';
+        const url = 'https://api.weatherapi.com/v1/history.json';
 
         axios.get(url, {
             params: {
@@ -141,7 +141,7 @@ const actions = {
     },
 
     async getWeatherForecast({ commit }, payload) {
-        const url = 'http://api.weatherapi.com/v1/forecast.json';
+        const url = 'https://api.weatherapi.com/v1/forecast.json';
 
         axios.get(url, {
             params: {

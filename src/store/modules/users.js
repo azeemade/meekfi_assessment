@@ -24,7 +24,7 @@ const actions = {
         const key = 'f3dfa3e1bb9643548fc165750232204';
         const q = 'auto:ip'
 
-        const url = 'http://api.weatherapi.com/v1/current.json';
+        const url = 'https://api.weatherapi.com/v1/current.json';
 
         axios.get(url, {
             params: {
