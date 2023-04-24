@@ -23,6 +23,15 @@ const router = createRouter({
       component: WeatherView,
       meta: {
         requireLocation: true
+      },
+      beforeRouteEnter (to, from, next) {
+        console.log(localStorage.getItem('authorized'));
+          if (localStorage.getItem('authorized') === true) {
+            next()
+          }
+          else {
+            next({ name: 'map' })
+          }
       }
     },
     {
@@ -37,10 +46,18 @@ const router = createRouter({
 })
 
 // router.beforeEach((to, from, next) => {
-//   console.log(JSON.parse(JSON.stringify(store.getters["locations/currentWeather"])) )
-//   if (to.meta.requireLocation && !localStorage.getItem('authorized')) {
+//   if (to.meta.requireLocation) {
+//     console.log('passed reqLoc');
+//     if (localStorage.getItem('authorized') === true) {
+//       next()
+//       console.log('passed authorized');
+//       return
+//     }
+//     console.log('not authorized');
 //     next({ name: 'map' })
-//   } else {
+//   }
+//   else {
+//     console.log('not reqLoc');
 //     next()
 //   }
 // })

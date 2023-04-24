@@ -7,7 +7,7 @@
           :alt="weather.current.condition.text"
         />
       </div>
-      <div class="text-3xl text-secondary-content">
+      <div class="text2xl md:text-3xl text-secondary-content">
         <p>{{ weather.current.temp_c }}°C</p>
       </div>
       <div class="text-xs text-accent-content">
@@ -19,7 +19,7 @@
       </div>
     </div>
     <div class="text-end">
-      <div class="text-secondary-content">
+      <div class="text-secondary-content text-sm">
         <p>{{ weather.location.name }}, {{ weather.location.country }}</p>
       </div>
       <div class="text-sm text-accent-content">
@@ -34,8 +34,6 @@
     <script setup>
 import { computed } from "vue";
 import { useStore } from "vuex";
-
-import Avatar from "../components/Avatar.vue";
 
 const props = defineProps(["weather"]);
 const store = useStore();

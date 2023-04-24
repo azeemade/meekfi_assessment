@@ -167,6 +167,9 @@ const getters = {
         return state.alerts;
     },
     currentWeather: (state) => {
+        state.currentWeather.length > 0
+          ? localStorage.setItem("authorized", JSON.stringify(true))
+          : localStorage.setItem("authorized", JSON.stringify(false));
         return state.currentWeather;
     },
     weatherHistory: (state) => {

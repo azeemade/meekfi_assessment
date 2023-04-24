@@ -47,7 +47,7 @@ const options = ref({
   responsive: true,
   maintainAspectRatio: false,
 });
-const selectedDate = ref(moment().format("yyyy-MM-dd"));
+const selectedDate = ref(moment().format("yyyy-MM-DD"));
 
 const datasetCollection = computed(
   () => store.getters["locations/selectedWeatherHistory"]

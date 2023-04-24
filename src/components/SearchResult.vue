@@ -1,7 +1,7 @@
 <template>
   <div v-if="searchResult != null" class="mb-12">
     <div class="flex justify-between items-center mb-6">
-      <p class="text-primary font-semibold text-lg">
+      <p class="text-primary font-semibold md:text-lg">
         Your search result for
         <strong>{{ searchResult.location.name }}</strong>
       </p>

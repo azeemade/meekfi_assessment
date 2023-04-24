@@ -1,26 +1,28 @@
 <template>
-  <div class="grid grid-cols-2 gap-8">
-    <div>
-      <SearchResult />
-      <div class="flex justify-between items-center mb-6">
-        <p class="text-primary font-semibold text-lg">
-          You have selected {{ currentWeather.length }} location(s)
-        </p>
-        <router-link to="/map" class="text-base-300 underline text-sm"
-          >Add new location</router-link
+  <div>
+    <SearchResult class="md:w-1/2" />
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div>
+        <div class="flex justify-between items-center mb-6">
+          <p class="text-primary font-semibold md:text-lg">
+            You have selected {{ currentWeather.length }} location(s)
+          </p>
+          <router-link to="/map" class="text-base-300 underline text-sm"
+            >Add new location</router-link
+          >
+        </div>
+        <div
+          v-for="(weather, index) in currentWeather"
+          :key="index"
+          class="mb-3"
+          @click="showChart(index)"
         >
+          <SelectedLocationCard :weather="weather" />
+        </div>
       </div>
-      <div
-        v-for="(weather, index) in currentWeather"
-        :key="index"
-        class="mb-3"
-        @click="showChart(index)"
-      >
-        <SelectedLocationCard :weather="weather" />
+      <div>
+        <SelectedLocationChart />
       </div>
-    </div>
-    <div>
-      <SelectedLocationChart />
     </div>
   </div>
 </template>

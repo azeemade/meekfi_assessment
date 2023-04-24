@@ -1,5 +1,10 @@
 <script setup>
+import { computed } from "vue";
 import UserForm from "../components/UserForm.vue";
+
+// const currentWeather = computed(
+//   () => store.getters["locations/currentWeather"]
+// );
 </script>
 
 <template>
