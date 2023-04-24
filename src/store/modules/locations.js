@@ -43,7 +43,7 @@ const mutations = {
     },
 
     setSelectedWeatherHistory(state, payload) {
-        state.selectedWeatherHistory = payload
+        state.selectedWeatherHistory = state.weatherHistory[payload]
     },
 
     setSelectedIndex(state, payload) {
@@ -182,7 +182,7 @@ const getters = {
         }
 
         if (state.weatherHistory[state.selectedIndex]){
-            state.weatherHistory[0].forecast.forecastday[0].hour.forEach(item => {
+            state.weatherHistory[state.selectedIndex].forecast.forecastday[0].hour.forEach(item => {
                 chartData.labelsX.push(moment(item.time).format('H:mm'));
                 chartData.labelsY.push(item.temp_c);
             });
@@ -193,7 +193,9 @@ const getters = {
             datasets: [
               {
                 label: "Temp (°C)",
-                backgroundColor: "#f87979",
+                fill: true,
+                backgroundColor: "rgb(221, 255, 184)",
+                borderColor: "rgba(81, 153, 3, 0.5)",
                 data: chartData.labelsY,
                 tension: 0.5,
               }

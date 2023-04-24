@@ -23,9 +23,9 @@ const router = useRouter();
 const chartdiv = ref(null);
 let loading = ref(false);
 
-// const currentWeather = computed(
-//   () => store.getters["locations/currentWeather"]
-// );
+const currentWeather = computed(
+  () => store.getters["locations/currentWeather"]
+);
 
 onMounted(() => {
   // Create root and chart

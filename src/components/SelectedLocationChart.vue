@@ -26,6 +26,7 @@ import {
   LineElement,
   Title,
   Tooltip,
+  Filler,
   Legend,
 } from "chart.js";
 import { Line } from "vue-chartjs";
@@ -36,6 +37,7 @@ ChartJS.register(
   LinearScale,
   PointElement,
   LineElement,
+  Filler,
   Title,
   Tooltip,
   Legend
@@ -46,6 +48,22 @@ const store = useStore();
 const options = ref({
   responsive: true,
   maintainAspectRatio: false,
+  scales: {
+    y: {
+      grid: {
+        display: false,
+      },
+      // ticks: {
+      //   // forces step size to be 50 units
+      //   stepSize: 10,
+      // },
+    },
+    x: {
+      grid: {
+        display: false,
+      },
+    },
+  },
 });
 const selectedDate = ref(moment().format("yyyy-MM-DD"));
 

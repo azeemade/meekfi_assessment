@@ -24,15 +24,6 @@ const router = createRouter({
       meta: {
         requireLocation: true
       },
-      beforeRouteEnter (to, from, next) {
-        console.log(localStorage.getItem('authorized'));
-          if (localStorage.getItem('authorized') === true) {
-            next()
-          }
-          else {
-            next({ name: 'map' })
-          }
-      }
     },
     {
       path: '/about',
@@ -45,21 +36,18 @@ const router = createRouter({
   ]
 })
 
-// router.beforeEach((to, from, next) => {
-//   if (to.meta.requireLocation) {
-//     console.log('passed reqLoc');
-//     if (localStorage.getItem('authorized') === true) {
-//       next()
-//       console.log('passed authorized');
-//       return
-//     }
-//     console.log('not authorized');
-//     next({ name: 'map' })
-//   }
-//   else {
-//     console.log('not reqLoc');
-//     next()
-//   }
-// })
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requireLocation)) {
+    if (localStorage.getItem('authorized') === false) {
+      next({
+        name: 'map',
+      })
+    } else {
+        next()
+    }
+  } else {
+    next()
+  }
+});
 
 export default router

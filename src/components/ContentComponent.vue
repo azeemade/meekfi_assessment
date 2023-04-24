@@ -16,6 +16,9 @@
           :key="index"
           class="mb-3"
           @click="showChart(index)"
+          :class="
+            id === index ? 'bg-base-100 border-accent border rounded-md' : ''
+          "
         >
           <SelectedLocationCard :weather="weather" />
         </div>
@@ -36,17 +39,20 @@ import SearchResult from "../components/SearchResult.vue";
 
 const store = useStore();
 
+const id = computed(() => store.state.locations.selectedIndex);
+
 const currentWeather = computed(
   () => store.getters["locations/currentWeather"]
 );
 
 function showChart(index) {
   store.commit("locations/setSelectedIndex", index);
+  store.commit("locations/setSelectedWeatherHistory", index);
 }
 
 onMounted(() => {
-  currentWeather.length > 0
-    ? localStorage.setItem("authorized", JSON.stringify(true))
-    : localStorage.setItem("authorized", JSON.stringify(false));
+  // currentWeather.length > 0
+  //   ? localStorage.setItem("authorized", JSON.stringify(true))
+  //   : localStorage.setItem("authorized", JSON.stringify(false));
 });
 </script>

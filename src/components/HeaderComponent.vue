@@ -12,17 +12,17 @@
       <div>
         <p class="text-4xl text-primary font-bold mb-2">
           {{
-            new Date(user.weather.location.localtime).getHours() < 12
+            new Date(moment()).getHours() < 12
               ? "Good morning "
-              : new Date(user.weather.location.localtime).getHours() < 16
+              : new Date(moment()).getHours() < 16
               ? "Good afternoon "
               : "Good evening "
           }}
-          {{ user.info.name }}!
+          {{ user ? user.info.name : "User" }}!
         </p>
         <p class="text-primary/50 font-medium text-lg">
           It's
-          {{ moment(user.weather.location.localtime).format("dddd, MMMM Do") }}
+          {{ moment(moment()).format("dddd, MMMM Do") }}
         </p>
       </div>
     </div>
@@ -49,6 +49,4 @@ import MobileHeader from "../components/MobileHeader.vue";
 
 const store = useStore();
 const user = computed(() => store.getters["users/user"]);
-
-store.dispatch("users/getUser");
 </script>
